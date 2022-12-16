@@ -364,7 +364,7 @@ function library:Window(WName)
 				Connection:Disconnect()
 			end
 			Connection = RunService.RenderStepped:Connect(function()
-				local Mouse = game:GetService("UserInputService"):GetMouseLocation()
+				local Mouse = game:GetService("Players").LocalPlayer:GetMouse();
 				local Percentage = math.clamp((Mouse.X - SliderFrame.AbsolutePosition.X)/(SliderFrame.AbsoluteSize.X),0,1)
 				local GetValue = Vals.Min + (Vals.Max - Vals.Min) * Percentage
 	
