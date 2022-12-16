@@ -31,7 +31,7 @@ function library:Window(WName)
 	local UIListLayout = Instance.new("UIListLayout")
 	local UIPadding = Instance.new("UIPadding")
 
-	Holder.Name = WName
+	Holder.Name = WName or "GepoLib"
 	Holder.Parent = UILibrary
 	Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Holder.BackgroundTransparency = 1.000
@@ -80,7 +80,7 @@ function library:Window(WName)
 	WindowText.Size = UDim2.new(0, 186, 0, 27)
 	WindowText.ZIndex = 5
 	WindowText.Font = Enum.Font.SourceSans
-	WindowText.Text = WName
+	WindowText.Text = WName or "GepoLib"
 	WindowText.TextColor3 = Color3.fromRGB(255, 255, 255)
 	WindowText.TextSize = 22.000
 	WindowText.TextXAlignment = Enum.TextXAlignment.Left
@@ -93,13 +93,13 @@ function library:Window(WName)
 	UIPadding.PaddingTop = UDim.new(0, 40)
 
 	local NewWindow = Holder;
-	--//ALL CREDITS GO TO Google Chrome\\--
 
 	local players = game:service('Players');
-    local player = players.LocalPlayer;
-    local mouse = player:GetMouse();
-    local run = game:service('RunService');
-    local stepped = run.Stepped;
+        local player = players.LocalPlayer;
+        local mouse = player:GetMouse();
+        local run = game:service('RunService');
+        local stepped = run.Stepped;
+
     draggable = function(obj)
         spawn(function()
             obj.Active = true;
@@ -128,7 +128,7 @@ function library:Window(WName)
                 end;
             end);
         end)
-	end;
+    end;
 
 	draggable(Holder)
 
@@ -309,13 +309,10 @@ function library:Window(WName)
 
 		Slider.Name = "Slider"
 		Slider.Parent = SliderFrame
-		Slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Slider.BackgroundColor3 = Color3.fromRGB(90, 255, 115)
 		Slider.BorderSizePixel = 0
 		Slider.Size = UDim2.new(0, 0, 0, 6)
 		Slider.ZIndex = 4
-
-		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 116, 116))}
-		UIGradient.Parent = Slider
 
 		ValueText.Name = "ValueText"
 		ValueText.Parent = SliderHolder
