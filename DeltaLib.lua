@@ -7,35 +7,39 @@ for i, v in pairs(game.CoreGui:GetDescendants()) do
 	end
 end
 
-local function MakeDraggable(topbarobject, object) 
-	pcall(function()
-		local UserInputService = game:GetService("UserInputService")
-		local dragging, dragInput, mousePos, framePos = false, false, false, false
-		topbarobject.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 then
-				dragging = true
-				mousePos = input.Position
-				framePos = object.Position
-
+local function MakeDraggable(Frame) 
+		dragToggle = nil
+		local dragSpeed = 0.25
+		dragInput = nil
+		dragStart = nil
+		local dragPos = nil
+		function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			TS:Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = Frame.Position
 				input.Changed:Connect(function()
 					if input.UserInputState == Enum.UserInputState.End then
-						dragging = false
+						dragToggle = false
 					end
 				end)
 			end
 		end)
-		topbarobject.InputChanged:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement then
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 				dragInput = input
 			end
 		end)
-		UserInputService.InputChanged:Connect(function(input)
-			if input == dragInput and dragging then
-				local delta = input.Position - mousePos
-				object.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
 			end
 		end)
-	end)
 end
 
 local function GetXY(obj)
@@ -95,8 +99,6 @@ function library:Window(text)
 
 	maintabs.CanvasSize = UDim2.new(0, 0, 10, 0)
 
-	MakeDraggable(topbar, main)
-
 	shuilibrary.Name = tostring(math.random())
 	shuilibrary.Parent = game.CoreGui
 
@@ -107,6 +109,7 @@ function library:Window(text)
 	main.Position = UDim2.new(0.379820347, 0, 0.321510285, 0)
 	main.Size = UDim2.new(0, 455, 0, 312)
 
+        MakeDraggable(main) 
 	topbar.Name = "topbar"
 	topbar.Parent = main
 	topbar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
