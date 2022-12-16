@@ -554,7 +554,7 @@ function library:Window(WName)
 		ButtonHolder2.BackgroundTransparency = 1.000
 		ButtonHolder2.BorderSizePixel = 0
 		ButtonHolder2.Position = UDim2.new(0, 0, 0.519480586, 0)
-		ButtonHolder2.Size = UDim2.new(0, 200, 0, 10)
+		ButtonHolder2.Size = UDim2.new(0, 200, 0, 37)
 		ButtonHolder2.ZIndex = 2
            ui:Resize()
         end
