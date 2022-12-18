@@ -147,7 +147,7 @@ function Kavo:ToggleUI()
     end
 end
 
-function Kavo.CreateLib(kavName, themeList)
+function Kavo.CreateLib(kavName, themeList, lol)
     if not themeList then
         themeList = themes
     end
@@ -222,7 +222,7 @@ function Kavo.CreateLib(kavName, themeList)
     blurFrame.Size = UDim2.new(0, 376, 0, 289)
     blurFrame.ZIndex = 999
 
-    ScreenGui.Parent = game.CoreGui
+    ScreenGui.Parent = lol
     ScreenGui.Name = LibName
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.ResetOnSpawn = false
