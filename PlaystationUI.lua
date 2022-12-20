@@ -1,6 +1,5 @@
 do 
         if game.CoreGui:FindFirstChild("fu8rj82n") then game.CoreGui:FindFirstChild("fu8rj82n"):Destroy() end
-    end
 end
 
 local Library = {}
