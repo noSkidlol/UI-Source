@@ -18,6 +18,7 @@ end
 
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
+local FrameCorner = Instance.new("UICorner")
 local TextButton1 = Instance.new("TextLabel")
 local TextButton12 = Instance.new("TextLabel") 
 
@@ -27,12 +28,15 @@ ScreenGui.Parent = game.CoreGui
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(0,0,0)
 Frame.BackgroundTransparency = 1
-Frame.BorderColor3 = Color3.fromRGB(120,255,0)
 Frame.Position = UDim2.new(1, -25, 1, -25)
 Frame.AnchorPoint = Vector2.new(1, 1)
 Frame.Size = UDim2.new(0,280,0,100)
 Frame.AutomaticSize = Enum.AutomaticSize.Y
 Frame.Active = true
+
+FrameCorner.CornerRadius = UDim.new(0, 7)
+FrameCorner.Name = "FrameCorner"
+FrameCorner.Parent = Frame
 
 TextButton1.Parent = Frame
 TextButton1.BackgroundColor3 = Color3.fromRGB(0,0,0)
@@ -808,10 +812,10 @@ function Library:Window(windowname,windowinfo)
                     DropdownContainer.Visible = true
                     DropdownContainer:TweenSize(UDim2.new(0, 288,0, 115),"Out","Linear",0.3)
                     DropdownIcon.ImageColor3 = Color3.fromRGB(137, 246, 255)
-                    wait(0.3)
+                    --wait(0.3)
                     DropdownOptionContainer.Visible = true
                     DropdownOptionContainer:TweenSize(UDim2.new(0, 288,0, 106),"Out","Linear",0.2)
-                    wait(0.09)
+                    --wait(0.09)
                     Home.CanvasPosition = Vector2.new(0,0)
                     DropdownContainer:TweenSize(UDim2.new(0, 288,0, 115),"Out","Linear",0.1) -- check
                     DropdownOptionContainer:TweenSize(UDim2.new(0, 288,0, 106),"Out","Linear",0.1)-- check
@@ -819,13 +823,13 @@ function Library:Window(windowname,windowinfo)
                     DropDownEnabled = false
                     DropdownIcon.ImageColor3 = Color3.fromRGB(255,255,255)
                     DropdownOptionContainer:TweenSize(UDim2.new(0, 288,0, 8),"Out","Linear",0.2)
-                    wait(0.2)
+                    --wait(0.2)
                     DropdownOptionContainer.Visible = false
                     DropdownContainer:TweenSize(UDim2.new(0, 288,0, 4),"Out","Linear",0.3)
                     wait(0.3)
                     makeelements(true)
                     DropdownContainer.Visible = false
-                    wait(0.09)
+                    --wait(0.09)
                     DropdownContainer:TweenSize(UDim2.new(0, 288,0, 4),"Out","Linear",0.1) -- check
                     DropdownOptionContainer:TweenSize(UDim2.new(0, 288,0, 8),"Out","Linear",0.1) -- check
                 end
@@ -872,11 +876,11 @@ function Library:Window(windowname,windowinfo)
                     DropDownEnabled = false
                     DropdownIcon.ImageColor3 = Color3.fromRGB(255,255,255)
                     DropdownOptionContainer:TweenSize(UDim2.new(0, 288,0, 8),"Out","Linear",0.2)
-                    wait(0.2)
+                    --wait(0.2)
                     DropdownOptionContainer.Visible = false
                     DropdownContainer:TweenSize(UDim2.new(0, 288,0, 4),"Out","Linear",0.3)
                     callback(v)
-                    wait(0.3)
+                    --wait(0.3)
                     makeelements(true)
                     DropdownContainer.Visible = false
                     DropdownContainer:TweenSize(UDim2.new(0, 288,0, 4),"Out","Linear",0.1) -- check
