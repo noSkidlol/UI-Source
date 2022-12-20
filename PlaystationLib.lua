@@ -274,7 +274,7 @@ function Library:Window(windowname,windowinfo)
 
     local PageYep = {}
 
-    function PageYep:Page(pagename,scrollsize,visible,elementspacing)
+    function PageYep:Page(pagename,visible)
         local Tab = Instance.new("TextButton")
         local TabCorner = Instance.new("UICorner")
         local Home = Instance.new("ScrollingFrame")
@@ -308,14 +308,14 @@ function Library:Window(windowname,windowinfo)
         Home.Size = UDim2.new(0, 298, 0, 205)
         Home.ScrollBarThickness = 3
         Home.ScrollBarImageColor3 = Color3.fromRGB(5,5,5)
-        Home.CanvasSize = UDim2.new(0,0,scrollsize,0) or UDim2.new(0,0,4,0)
+        Home.CanvasSize = UDim2.new(0,0,4,0)
         Home.Visible = visible or false
         print("the um")
         PageLayout.Name = "PageLayout"
         PageLayout.Parent = Home
         PageLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
         PageLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        PageLayout.Padding = UDim.new(0,elementspacing) or UDim.new(0,6)
+        PageLayout.Padding = UDim.new(0,6)
 
         Tab.MouseButton1Down:Connect(function()
             Tab.TextSize = 9 
