@@ -1,5 +1,9 @@
 local Kavo = {}
 
+pcall(function()
+  game.CoreGui:FindFirstChild("Kavo"):Destroy()
+end)
+
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
 local input = game:GetService("UserInputService")
@@ -7,11 +11,8 @@ local run = game:GetService("RunService")
 
 local Utility = {}
 local Objects = {}
-function Kavo:DraggingEnabled(frame, parent)
-        
+function Kavo:DraggingEnabled(frame, parent)       
     parent = parent or frame
-    
-    -- stolen from wally or kiriot, kek
     local dragging = false
     local dragInput, mousePos, framePos
 
@@ -137,17 +138,15 @@ end
 Settings = game:service'HttpService':JSONEncode(readfile(Name))
 end)
 
-local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
-
 function Kavo:ToggleUI()
-    if game.CoreGui[LibName].Enabled then
-        game.CoreGui[LibName].Enabled = false
+    if game.CoreGui["Kavo"].Enabled then
+        game.CoreGui["Kavo"].Enabled = false
     else
-        game.CoreGui[LibName].Enabled = true
+        game.CoreGui["Kavo"].Enabled = true
     end
 end
 
-function Kavo.CreateLib(kavName, themeList, lol)
+function Kavo.CreateLib(kavName, themeList)
     if not themeList then
         themeList = themes
     end
@@ -222,8 +221,8 @@ function Kavo.CreateLib(kavName, themeList, lol)
     blurFrame.Size = UDim2.new(0, 376, 0, 289)
     blurFrame.ZIndex = 999
 
-    ScreenGui.Parent = lol
-    ScreenGui.Name = LibName
+    ScreenGui.Parent = game.CoreGui
+    ScreenGui.Name = "Kavo"
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.ResetOnSpawn = false
 
